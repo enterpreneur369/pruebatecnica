@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:p="http://primefaces.org/ui"> 
+      
+<h:head>
+	<link href="./resources/css/estilos.css" rel="stylesheet" type="text/css" />
+	<link href="./resources/css/theme.css" rel="stylesheet" type="text/css" />
+</h:head>
+<body> 
+	<h:form>
+		<p:messages autoUpdate="true" />
+		<p:panel>
+			<f:facet name="header">Registrar Estudiante</f:facet>
+			<h:panelGrid id="pg" columns="4">
+				<p:outputLabel for="txtNombres" value="Nombres" />
+				<p:inputText id="txtNombres"
+					value="#{registroFrijol.estudiante.nombres}" />
+				<p:message for="txtNombres" display="text" />
+				<h:column />
+				
+				<p:outputLabel for="txtApellidos" value="Apellidos" />
+				<p:inputText id="txtApellidos"
+					value="#{registroFrijol.estudiante.apellidos}" />
+				<p:message for="txtApellidos" display="text" />
+				<h:column />
+				
+				<p:outputLabel for="txtCiudad" value="Ciudad" />
+				<p:inputText id="txtCiudad"
+					value="#{registroFrijol.estudiante.ciudad}" />
+				<p:message for="txtCiudad" display="text" />
+				<h:column />
+				
+				<p:outputLabel for="txtSede" value="Sede" />
+				<p:inputText id="txtSede"
+					value="#{registroFrijol.estudiante.sede}" />
+				<p:message for="txtSede" display="text" />
+				<h:column />
+				
+				<p:outputLabel for="txtCurso" value="Curso" />
+				<p:inputText id="txtCurso"
+					value="#{registroFrijol.estudiante.curso}" />
+				<p:message for="txtCurso" display="text" />
+				<h:column />
+			</h:panelGrid>
+			
+			<p:commandButton value="Registrar" action="#{registroFrijol.registrar()}" inmediate="true" />
+			<span> </span>
+			<p:commandButton value="Volver" action="index?faces-redirect=true" inmediate="true" />
+		</p:panel>
+	</h:form>
+</body> 
+</html>

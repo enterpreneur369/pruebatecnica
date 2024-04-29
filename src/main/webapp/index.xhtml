@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link href="./resources/css/estilos.css" rel="stylesheet"
+		type="text/css" />
+	<link href="./resources/css/theme.css" rel="stylesheet" type="text/css" />
+</h:head>
+<body>
+	<h1>"#{indexFrijol.titulo}</h1>
+
+	<h:form>
+		<h:commandLink value="Excel">
+			<p:dataExporter type="xls" target="tablaEstudiantes"
+				fileName="asistencia_estudiantes" />
+		</h:commandLink>
+
+		<h:commandLink value="CSV">
+			<p:dataExporter type="csv" target="tablaEstudiantes"
+				fileName="asistencia_estudiantes" />
+		</h:commandLink>
+		<p:growl id="msgs" showDetail="true" autoUpdate="true" />
+		<p:dataTable id="tablaEstudiantes" value="#{indexFrijol.estudiantes}"
+			var="estudiante" editable="true" widgetVar="tablaEstudiante"
+			filteredValue="#{indexFrijol.estudiantesFiltrados}">
+			<p:ajax event="rowEdit" listener="#{indexFrijol.editarFila}" />
+			<p:ajax event="rowEditCancel"
+				listener="#{indexFrijol.cancelarEdicion}" />
+
+			<p:column headerText="ID" exportable="false">
+				<p:outputLabel value="#{estudiante.id}" />
+			</p:column>
+
+			<p:column headerText="Nombres">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputLabel value="#{estudiante.nombres}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{estudiante.nombres}" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Apellidos">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputLabel value="#{estudiante.apellidos}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{estudiante.apellidos}" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Ciudad" filterBy="#{estudiante.ciudad}"
+				filterMatchMode="contains" exportable="false">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputLabel value="#{estudiante.ciudad}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{estudiante.ciudad}" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Sede" filterBy="#{estudiante.sede}"
+				filterMatchMode="contains" exportable="false">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputLabel value="#{estudiante.sede}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{estudiante.sede}" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Curso" filterBy="#{estudiante.curso}"
+				filterMatchMode="contains" exportable="false">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputLabel value="#{estudiante.curso}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{estudiante.curso}" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Asistio">
+				<h:outputText value="" />
+			</p:column>
+
+			<p:column headerText="Editar" exportable="false">
+				<p:rowEditor />
+			</p:column>
+
+			<p:column headerText="Eliminar" exportable="false">
+				<p:commandButton icon="ui-icon-trash" value="Eliminar"
+					action="#{indexFrijol.eliminarEstudiante(estudiante)}"
+					inmediate="true" />
+			</p:column>
+
+		</p:dataTable>
+
+		<p:commandButton value="Registrar nuevo estudiante"
+			action="registrar?fases-redirect=true" inmediate="true" />
+	</h:form>
+</body>
+</html>

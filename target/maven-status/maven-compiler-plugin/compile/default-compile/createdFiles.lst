@@ -1,0 +1,10 @@
+com\miempresa\servicio\impl\EstudianteServicioImpl.class
+com\miempresa\oad\impl\EstudianteOADImpl.class
+com\miempresa\oad\ICLAB.class
+com\miempresa\servicio\IServicioWeb.class
+com\miempresa\controlador\IndexFrijol.class
+com\miempresa\modelo\Estudiante.class
+com\miempresa\controlador\RegistroFrijol.class
+com\miempresa\servicio\IEstudianteServicio.class
+com\miempresa\oad\IEstudianteOAD.class
+com\miempresa\servicio\impl\ServicioWeb.class
